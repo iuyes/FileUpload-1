@@ -8,7 +8,7 @@
 
 ###`new FileUpload(options)`
 
-初始化异步文件上传控件
+初始化控件
 
 **参数**
 
