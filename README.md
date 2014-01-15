@@ -23,6 +23,7 @@
    - `change` - (function) [回调] 文件选择器的value值改变
 
 **接口**
+
 1. `submit()` - 上传文件
 
 例子：
