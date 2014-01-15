@@ -15,7 +15,7 @@
 1. `options` - (object) 高级配置，有以下功能：
    - `trigger` - (string|object) 上传按钮
    - `url` - (string) 文件上传地址
-   - `postName` - (string) 文件选择器（<input type="file" />）的name值 
+   - `postName` - (string) 文件选择器（&lt;input type="file" /&gt;）的name值 
    - `data` - (object) 附加上传的数据
    - `accept` - (string) 限制文件类型
    - `success` - (function) [回调] 上传成功
@@ -24,6 +24,7 @@
 
 例子：
 ```js
+
 define(function(require, exports, module) {
     var FileUpload = require('fileupload');
     
@@ -52,7 +53,7 @@ define(function(require, exports, module) {
         }
     });
     
-    //例二：自定义上传
+    //例二：自定义一个上传按钮
     var File = new FileUpload({
         trigger: $('#id .submit'),
         url: './php/upload.php',//可以是相对地址
@@ -76,10 +77,11 @@ define(function(require, exports, module) {
     });
     
 });
+
 ```
 
 ##特别提醒
 1. accept参数格式就是input标签accept属性值的格式（http://www.w3school.com.cn/html5/att_input_accept.asp）
-2. trigger支持CSS选择器格式字符串和jQuery对象
+2. trigger可以是CSS选择器格式字符串，或jQuery对象
 
 
