@@ -22,6 +22,9 @@
    - `error` - (function) [回调] 上传失败 
    - `change` - (function) [回调] 文件选择器的value值改变
 
+**接口**
+1. `submit()` - 上传文件
+
 例子：
 ```js
 
@@ -53,6 +56,7 @@ define(function(require, exports, module) {
         }
     });
     
+    
     //例二：自定义一个上传按钮
     var File = new FileUpload({
         trigger: $('#id .submit'),
@@ -70,7 +74,7 @@ define(function(require, exports, module) {
             return false;
         }
     });
-    
+    //自定义的按钮
     $('.btn').click(function() {
         //点击.btn按钮上传
         File.submit();
