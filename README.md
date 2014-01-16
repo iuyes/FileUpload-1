@@ -86,7 +86,8 @@ define(function(require, exports, module) {
 ```
 
 ##特别提醒
-1. accept参数格式就是input标签accept属性值的格式（http://www.w3school.com.cn/html5/att_input_accept.asp）
-2. trigger可以是CSS选择器格式字符串，或jQuery对象
+1. 需要配合后台接口使用，根据不同接口可修改三个常量：`TRANSIT_KEY``TRANSIT_VALUE``CALLBACK_KEY`
+2. accept参数格式就是input标签accept属性值的格式（http://www.w3school.com.cn/html5/att_input_accept.asp）
+3. trigger可以是CSS选择器格式字符串，或jQuery对象
 
 
