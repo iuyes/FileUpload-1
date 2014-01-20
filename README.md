@@ -71,6 +71,7 @@ define(function(require, exports, module) {
       }
     });
     
+    
     //例三：自定义一个上传按钮
     var File = new FileUpload({
         trigger: $('#id .submit'),
