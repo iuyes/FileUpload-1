@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk">
+<title>fileupload examples</title>
+<style>
+body {
+	text-align:center;
+}
+
+.btn {
+	 display:inline-block;
+	 margin-top:50px;
+	 padding:4px 6px;
+	 font-size:14px;
+	 background:#ddd;
+}
+
+.progress {
+	display:inline-block;
+	width:400px;
+	height:20px;
+	margin-top:40px;
+	background:#eee;
+	border:1px solid #aaa;
+}
+.progress div {
+	height:100%;
+	width:20px;
+	background:#0ff;
+}
+
+</style>
+
+<script src="http://cb.poco.cn/seajs/2.1.1/sea.js"></script>
+<script>
+seajs.config({
+    paths: {
+        utility: 'http://cb.poco.cn/utility',
+        matcha: 'http://cb.poco.cn/matcha'
+    },
+    alias:{
+        jquery: 'utility/jquery/1.8.3/jquery'
+    },
+    charset: 'utf-8'
+});
+</script>
+</head>
+
+<body style="text-align:center;">
+
+
+
+
+<div class="btn">上传图片</div>
+
+<div></div>
+
+<div class="progress">
+	<div></div>
+</div>
+
+
+
+<script>
+seajs.use(['jquery', '../src/fileupload'], function($, FileUpload) {
+	
+	//上传地址：http://imgup-s.poco.cn/ultra_upload_service/upload.mypoco_items.php
+	//中转地址：http://my.poco.cn/module_common/item/iframe_transit.php
+	new FileUpload({
+		trigger: '.btn',
+		url: 'http://imgup-s.poco.cn/ultra_upload_service/upload.mypoco_items.php',
+		postName: 'file',
+		data: {name: 'xiaozhang'},
+		accept: 'image/gif, image/png, image/jpeg',
+		progress: function(b, loaded, total) {
+			
+			$('.progress div').width(Math.round((loaded / total) * 400));
+		},
+		success: function(response, status, xhr) {
+			
+			alert('上传成功！');
+		},
+		error: function(status, xhr) {
+			
+			$('.progress div').width(0);
+			alert('上传失败！');
+		},
+		change: function(self) {
+			//return false; 阻止提交
+		}
+	});
+	
+});
+</script>
+</body>
+</html>
