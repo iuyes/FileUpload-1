@@ -1,6 +1,6 @@
 #FileUpload
 
-文件异步上传控件，使用隐藏iframe技术
+文件异步上传控件
 
 ---
 
@@ -18,13 +18,15 @@
    - `postName` - (string) 文件选择器（&lt;input type="file" /&gt;）的name值 
    - `data` - (object) 附加上传的数据
    - `accept` - (string) 限制文件类型
-   - `success` - (function) [回调] 上传成功
-   - `error` - (function) [回调] 上传失败 
-   - `change` - (function) [回调] 文件选择器的value值改变
+   - `progress()` - (boolean, number, number) [回调]上传进度-HTML5才能用
+   - `success()` - (object) [回调] 上传成功
+   - `error()` - (object | string) [回调] 上传失败 
+   - `change()` - () [回调] 文件选择器的value值改变
 
 **接口**
 
 1. `submit()` - 上传文件
+2. `supportAjax()` - 是否支持Ajax上传
 
 例子：
 ```js
@@ -39,17 +41,13 @@ define(function(require, exports, module) {
         postName: 'pic',//默认值是：oups
         data: {name: 'xiaozhang', age: '23'},
         accept: 'image/gif, image/jpeg',
-        success: function(data, self) {
+        success: function(data) {
             //data：后台返回的数据
-            //self：FileUpload对象
         },
-        error: function(data, self) {
+        error: function(data) {
             //data：后台返回的数据
-            //self：FileUpload对象
         },
-        change: function(self) {
-            //self：FileUpload对象
-            
+        change: function() {
             /*
             *return false;
             *返回false，阻止上传 
@@ -58,19 +56,34 @@ define(function(require, exports, module) {
     });
     
     
-    //例二：自定义一个上传按钮
+    //例二：进度条
+    new FileUpload({
+      trigger: '.submit',
+      url: './upload.php',
+      progress: function(boolean, loaded, total) {
+         //是否计算出文件大小、上传字节数、总字节数
+      },
+      success: function(data) {
+         
+      },
+      error: function(data) {
+         //data可能会是是错误码（文字）
+      }
+    });
+    
+    //例三：自定义一个上传按钮
     var File = new FileUpload({
         trigger: $('#id .submit'),
         url: './php/upload.php',//可以是相对地址
         data: {name: 'xiaozhang', age: '23'},
         accept: 'image/*',
-        success: function(data, self) {
+        success: function(data) {
             //
         },
-        error: function(data, self) {
+        error: function(data) {
             //
         },
-        change: function(self) {
+        change: function() {
             //阻止默认的上传动作
             return false;
         }
@@ -86,8 +99,9 @@ define(function(require, exports, module) {
 ```
 
 ##特别提醒
-1. 需要配合后台接口使用，根据不同接口可修改三个常量：`TRANSIT_KEY``TRANSIT_VALUE``CALLBACK_KEY`
-2. accept参数格式就是input标签accept属性值的格式（http://www.w3school.com.cn/html5/att_input_accept.asp）
-3. trigger可以是CSS选择器格式字符串，或jQuery对象
+1. 回调函数的this都指向FileUpload对象
+2. trigger可以是CSS选择器格式字符串，或jQuery对象
+3. 回调函数中的this指向FileUpload对象
+1. accept参数格式就是input标签accept属性值的格式（http://www.w3school.com.cn/html5/att_input_accept.asp）
 
 
