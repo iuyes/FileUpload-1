@@ -1,6 +1,6 @@
 #FileUpload
 
-文件异步上传控件
+文件异步上传控件（支持HTML5，使用Ajax上传，否则使用iframe）
 
 ---
 
