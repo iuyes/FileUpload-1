@@ -165,7 +165,7 @@ define(function(require, exports, module) {
 				}
 			});
 			
-			// 上传文件后的回调函数
+			// 上传文件后的回调函数 
 			window[self.cbName] = function(response) {
 				self._resetInput();
 				
