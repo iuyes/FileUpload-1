@@ -56,7 +56,7 @@ define(function(require, exports, module) {
     });
     
     
-    //例二：进度条
+    //例二：进度条；支持FormData对象的浏览器才支持进度条回调函数
     new FileUpload({
       trigger: '.submit',
       url: './upload.php',
@@ -100,9 +100,10 @@ define(function(require, exports, module) {
 ```
 
 ##特别提醒
-1. 回调函数的this都指向FileUpload对象
-2. trigger可以是CSS选择器格式字符串，或jQuery对象
-3. 回调函数中的this指向FileUpload对象
-1. accept参数格式就是input标签accept属性值的格式（http://www.w3school.com.cn/html5/att_input_accept.asp）
+1. 可以使用supportAjax()方法判断是否支持Ajax上传
+2. 回调函数的this都指向FileUpload对象
+3. trigger可以是CSS选择器格式字符串，或jQuery对象
+4. 回调函数中的this指向FileUpload对象
+5. accept参数格式就是input标签accept属性值的格式（http://www.w3school.com.cn/html5/att_input_accept.asp）
 
 
