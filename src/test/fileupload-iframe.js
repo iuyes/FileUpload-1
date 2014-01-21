@@ -46,7 +46,7 @@ define(function(require, exports, module) {
             self.options.trigger = $(self.options.trigger);
         }
 		
-		//定义回调函数
+		//定义回调函数 
 		self.cbName = cbValue + iframeUID;
 		
 		if(self.options.data.redirect_url.indexOf('?') === -1) {
